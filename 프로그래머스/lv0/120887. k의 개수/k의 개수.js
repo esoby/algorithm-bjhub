@@ -4,5 +4,4 @@ function solution(i, j, k) {
     return answer.split('').filter((e) => {
         return parseInt(e) === k ? true : false
     }).length
-    
 }
