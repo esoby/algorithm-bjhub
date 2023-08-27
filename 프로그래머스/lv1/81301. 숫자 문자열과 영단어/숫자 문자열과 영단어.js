@@ -1,4 +1,4 @@
-function solution(s) {
+function solutionX(s) {
     s = s.replaceAll('zero', 0)
         .replaceAll('one', 1)
         .replaceAll('two', 2)
@@ -10,5 +10,17 @@ function solution(s) {
         .replaceAll('eight', 8)
         .replaceAll('nine', 9)
 
+    return parseInt(s);
+}
+
+function solution(s) {
+    const num = ['zero','one','two','three','four','five','six','seven','eight','nine']
+
+    
+    num.forEach((n, i) => {
+        let tmp = s.split(n);
+        s = tmp.join(i);
+    })
+    
     return parseInt(s);
 }
