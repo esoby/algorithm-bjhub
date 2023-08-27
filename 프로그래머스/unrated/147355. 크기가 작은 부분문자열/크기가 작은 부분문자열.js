@@ -1,9 +1,10 @@
 function solution(t, p) {
-    let arr = [];
-    let len = p.length;
-    t = t.split('')
-    t.forEach((v, i) =>{
-        if(t[i+len-1]) arr.push(t.slice(i, i+len).join(''));
+    let cnt = 0;
+    
+    t.split('').forEach((v, i) =>{
+        let n = t.slice(i, i + p.length);
+        if (n.length === p.length && parseInt(n) <= parseInt(p)) cnt++;
     })
-    return arr.filter(v => parseInt(v) <= parseInt(p)).length;
+    
+    return cnt;
 }
