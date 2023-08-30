@@ -1,9 +1,6 @@
 function solution(array, commands) {
-    var answer = [];
-    
-    commands.forEach((vArr) => {
+    return commands.map((vArr) => {
         let [i, j, k] = vArr;
-        answer.push(array.slice(i-1, j).sort((a,b)=>a-b)[k-1])
+        return array.slice(i-1, j).sort((a,b)=>a-b)[k-1];
     })
-    return answer;
 }
