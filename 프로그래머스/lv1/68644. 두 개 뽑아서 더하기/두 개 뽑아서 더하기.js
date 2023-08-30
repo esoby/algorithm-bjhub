@@ -1,13 +1,7 @@
 function solution(numbers) {
-  let newArray = [];
+    const set = new Set()
     numbers.forEach((v, i) => {
-        numbers.forEach((v2, i2) => {
-            if (i !== i2) newArray.push(v + v2);
-        })
+        numbers.forEach((v2, i2) => { if (i !== i2) set.add(v + v2); })
     })
-    newArray.sort((a,b) => a-b)
-    
-    const setArray = new Set(newArray)
-    const answer = [...setArray]
-    return answer
+    return [...set].sort((a, b) => a - b)
 }
