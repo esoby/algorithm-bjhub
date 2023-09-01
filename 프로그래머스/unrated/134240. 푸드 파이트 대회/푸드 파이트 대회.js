@@ -3,5 +3,5 @@ function solution(food) {
     food.forEach((v, i) => { 
         str += (i+'').repeat(parseInt(v / 2)); 
     })
-    return str + '0' + str.split('').reverse().join('');
+    return str + '0' + [...str].reverse().join('');
 }
