@@ -1,7 +1,6 @@
-function solution(name, yearning, photos) {
-    return photos.map((photo) => {
-        photo = photo.map((v) => name.indexOf(v) !== -1 ? yearning[name.indexOf(v)] : 0)
-        return photo.reduce((a, c) => a + c, 0);
+function solution(n, y, ps) {
+    return ps.map(p => {
+        p = p.map(v => n.indexOf(v) !== -1 ? y[n.indexOf(v)] : 0)
+        return p.reduce((a, c) => a + c, 0);
     })
-    
 }
