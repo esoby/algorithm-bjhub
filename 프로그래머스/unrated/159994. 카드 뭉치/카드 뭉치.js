@@ -1,12 +1,8 @@
 function solution(cards1, cards2, goal) {
-    let flag = true;
-    let trycard = 0;
-    
-    goal.forEach(v => {
-        if(cards1[0] === v) cards1.shift();
-        else if(cards2[0] === v) cards2.shift();
-        else flag = false;
-    }) 
-
-    return flag ? 'Yes' : 'No';
+    for (const c of goal){
+        if(cards1[0] === c) cards1.shift();
+        else if(cards2[0] === c) cards2.shift();
+        else return 'No';
+    }
+    return 'Yes';
 }
