@@ -1,18 +1,14 @@
 function solution(answers) {
-    var answer = [];
+    const one = [1, 2, 3, 4, 5]  
+    const two = [2, 1, 2, 3, 2, 4, 2, 5]  
+    const thr = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]  
     
-    const one = '12345'.repeat(answers.length).split('');
-    const two = '21232425'.repeat(answers.length).split('');
-    const thr = '3311224455'.repeat(answers.length).split('');
+    const len = [
+        answers.filter((v, i) => v === one[i % 5]).length,
+        answers.filter((v, i) => v === two[i % 8]).length,
+        answers.filter((v, i) => v === thr[i % 10]).length ]
     
-    let len = [
-        one.filter((v, i) => v == answers[i]).length,
-        two.filter((v, i) => v == answers[i]).length,
-        thr.filter((v, i) => v == answers[i]).length
-    ]
-    
-    let m = Math.max(...len)
-    len.forEach((v, i) => v == m ? answer.push(i+1) : '')
-    
-    return answer;
+    let max = Math.max(...len)
+    return len.map((v, i) => v == max ? i+1 : '').filter(v => v)
 }
+
