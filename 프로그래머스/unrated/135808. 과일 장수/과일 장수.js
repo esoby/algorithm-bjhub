@@ -1,14 +1,12 @@
 function X_solution(k, m, score) {
-    var answer = [];
-    
     score.sort((a, b) => b - a)
     
-    let tmp = [];
+    let sum = 0;
     while(score.length >= m){
-        tmp = score.splice(0, m)
-        answer.push(Math.min(...tmp) * m)
+        let tmp = score.splice(0, m)
+        sum += Math.min(...tmp) * m;
     }
-    return answer ? answer.reduce((a, c) => a+c, 0) : 0;
+    return sum;
 }
 // sort 시간 초과
 
