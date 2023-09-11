@@ -1,4 +1,4 @@
-function solutionX(k, m, score) {
+function X_solution(k, m, score) {
     var answer = [];
     
     score.sort((a, b) => b - a)
@@ -10,13 +10,11 @@ function solutionX(k, m, score) {
     }
     return answer ? answer.reduce((a, c) => a+c, 0) : 0;
 }
+// sort 시간 초과
+
 function solution(k, m, score) {
-    var answer = [];
-    
-    let arr = new Array(k).fill(0)
-    score.forEach((v, i) => {
-        arr[v-1]++;
-    })
+    const arr = new Array(k).fill(0)
+    score.forEach(v => arr[v-1]++)
     
     let cnt = 0;
     for(let i = arr.length-1; i > -1; i--){
