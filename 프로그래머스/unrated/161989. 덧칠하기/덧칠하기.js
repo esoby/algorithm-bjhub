@@ -1,15 +1,13 @@
 function solution(n, m, sec) {
-    //while (1 < sec[0]) sec = sec.map(v => v - 1);
-    
     let cnt = 0;
-    for(let i = 0; i < sec.length; i++) {
-        if(sec[i]!== 0){
-            cnt++;
-            let stand = sec[i];
-            for(let j=i; j < sec.length; j++){
-                if(sec[j] < stand + m) sec[j] = 0;
-            }
-        }
+
+    for(const el of sec){
+        if(el === 0) continue;
+        let stand = el + m;
+        cnt++;
+        for(let j = sec.indexOf(el); j < sec.length; j++) 
+            if(sec[j] < stand) sec[j] = 0;
     }
+    
     return cnt;
 }
