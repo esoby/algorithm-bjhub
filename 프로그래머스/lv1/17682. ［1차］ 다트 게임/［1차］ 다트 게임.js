@@ -1,7 +1,6 @@
 function solution(dartResult) {
     let answer = [];
     let curr = 0;
-    
     dartResult = dartResult.split('');
     dartResult.forEach((v, i) => {
         if('0123456789'.indexOf(v) > -1) {
@@ -19,10 +18,10 @@ function solution(dartResult) {
                 case 'T' : answer.push(v * v * v); curr++; break;
             }
         } else if(v === '*'){
-            if(curr-1 > -1) answer[curr-1] = 2 * answer[curr-1];
-            if(curr-2 > -1) answer[curr-2] = 2 * answer[curr-2];
+            if(curr-1 > -1) answer[curr-1] *= 2;
+            if(curr-2 > -1) answer[curr-2] *= 2;
         } else if(v === '#'){
-            if(curr-1 > -1) answer[curr-1] = -1 * answer[curr-1];
+            if(curr-1 > -1) answer[curr-1] *= -1;
         } 
     })
     return answer.reduce((a,c) => a + parseInt(c), 0);
