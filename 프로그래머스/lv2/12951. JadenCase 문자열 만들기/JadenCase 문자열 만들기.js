@@ -1,6 +1,6 @@
 function solution(s) {
-    s = s.split('')
-    
+    s = s.toLowerCase().split('');
+ 
     let flag = true;
     s.forEach((v, i) => {
         if (flag && v !== ' ') {
@@ -8,7 +8,6 @@ function solution(s) {
             s[i] = s[i].toUpperCase();
         }
         else if (v === ' ') flag = true;
-        else s[i] = s[i].toLowerCase();
     })
     
     return s.join('');
