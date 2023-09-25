@@ -9,8 +9,5 @@ function solution(X, Y) {
     
     if(cntX && cntY) result += String(i).repeat(Math.min(cntX, cntY));
   }
-
-  if(!result) return '-1';
-  if(!parseInt(result)) return '0';
-  return result;
+    return !result ? '-1' : !parseInt(result) ? '0' : result ;
 }
