@@ -10,7 +10,7 @@ function solution(keymap, targets) {
         tg = tg.split('').map(v => map.get(v)).reduce((a,c) => a + c,0)
         if (!tg) return -1
         else return tg
-        
     })
+    
     return targets;
 }
