@@ -5,11 +5,10 @@ function solution(babbling) {
         arr.forEach((a, j) => {
             babbling[i] = babbling[i].replaceAll(a, j)
         })
-        babbling[i] = babbling[i].replaceAll('00', 'z')
-                            .replaceAll('11', 'z')
-                            .replaceAll('22', 'z')
-                            .replaceAll('33', 'z')
-                            .replaceAll(/[\d]/g,'')
+        arr.forEach((a, j) => {
+            babbling[i] = babbling[i].replaceAll((j+'').repeat(2), 'z')
+        })
+        babbling[i] = babbling[i].replaceAll(/[\d]/g,'')
     })
     return babbling.filter(v => !v).length;
 }
