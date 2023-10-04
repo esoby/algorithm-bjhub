@@ -1,23 +1,15 @@
 function solution(board, moves) {
-    var answer = 0;
-    
-    let newB = board.map(v => [...v]);
-    
-    board.forEach((v,i) => {
-        v.forEach((vv,j) => newB[j][i] = vv)})
-    
-    let arr = [];
+    let answer = 0;
+    const arr = [];
     moves.forEach((loc, _) => {
-        for(let i = 0; i < newB[loc-1].length; i++){
-            if(newB[loc-1][i]) {
-                if(arr[arr.length-1] === newB[loc-1][i]) {
-                    arr.splice(arr.length-1,1);
-                    answer += 2;
-                }else arr.push(newB[loc-1][i]);
-                newB[loc-1][i] = 0;
-                break;
-            }
-        }
+        let i = 0;
+        for(; i < board.length; i++) if(board[i][loc-1]) break;
+        if (board[i]) {
+            if(arr[arr.length-1] === board[i][loc-1]) {
+                arr.splice(arr.length-1,1);
+                answer += 2;
+            } else arr.push(board[i][loc-1]);
+            board[i][loc-1] = 0;}
     })
     return answer;
 }
