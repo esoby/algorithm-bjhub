@@ -12,7 +12,7 @@ function solution(n) {
             }
         }
     }
-    
-    
+
+
     return cnt + 1;
 }
