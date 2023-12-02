@@ -18,22 +18,13 @@ function solution(numbers, hand) {
                 let l = des.reduce((a, c, i) => a + Math.abs(c - left[i]), 0)
                 let r = des.reduce((a, c, i) => a + Math.abs(c - right[i]), 0)
                 
-                if (l > r) {
+                if (l > r || (l === r && hand === 'right')) {
                     right = des;
                     answer += 'R';
                 }
-                else if (l < r) {
+                else if (l < r || (l === r && hand === 'left')) {
                     left = des;
                     answer += 'L';
-                }
-                else {
-                    if (hand === 'right') {
-                        right = des;
-                        answer += 'R';
-                    } else {
-                        left = des;
-                        answer += 'L';
-                    }
                 }
             }
     })
