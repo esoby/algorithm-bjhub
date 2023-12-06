@@ -1,21 +1,17 @@
-function solution(new_id) {
+function solution(id) {
     // 1
-    new_id = new_id.toLowerCase()
+    id = id.toLowerCase()
     // 2
-    new_id = new_id.replaceAll(/[^a-z0-9\-\_\.]/g,'')
+    id = id.replaceAll(/[^a-z0-9\-\_\.]/g,'')
     // 3
-    while(new_id.includes('..')) new_id = new_id.replaceAll('..', '.');
+    while(id.includes('..')) id = id.replaceAll('..', '.');
     // 4
-    new_id = new_id.split('');
-    if(new_id[0] === '.') new_id.shift();
-    if(new_id[new_id.length - 1] === '.') new_id.pop();
-    // 5
-    if(!new_id[0]) new_id.push('a');
+    id = id[0] === '.' ? id.slice(1, id.length) : id
+    // 5    
+    id = id === '' ? 'a' : id
     // 6
-    while(new_id.length > 15) new_id.pop();
-    if(new_id[new_id.length - 1] === '.') new_id.pop();
+    id = id.slice(0, 15)
+    id = id[id.length - 1] === '.' ? id.slice(0, id.length - 1) : id
     // 7
-    while(new_id.length < 3) new_id.push(new_id[new_id.length - 1])
-    
-    return new_id.join('')
+    return id.length < 3 ? id + id[id.length - 1].repeat(3 - id.length) : id
 }
