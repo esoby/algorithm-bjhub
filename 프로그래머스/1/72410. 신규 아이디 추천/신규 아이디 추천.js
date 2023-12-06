@@ -1,6 +1,8 @@
 function solution(new_id) {
-    // 1, 2
-    new_id = new_id.toLowerCase().replaceAll(/[^a-z0-9\-\_\.]/g,'')
+    // 1
+    new_id = new_id.toLowerCase()
+    // 2
+    new_id = new_id.replaceAll(/[^a-z0-9\-\_\.]/g,'')
     // 3
     while(new_id.includes('..')) new_id = new_id.replaceAll('..', '.');
     // 4
