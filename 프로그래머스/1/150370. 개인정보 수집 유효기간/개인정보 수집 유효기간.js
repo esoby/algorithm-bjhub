@@ -1,15 +1,13 @@
 function solution(today, terms, privacies) {
-    today = String(today).split('.')
-    today = parseInt(today[0].slice(2)) * 28 * 12 + parseInt(today[1]) * 28 + parseInt(today[2])
+    today = String(today).split('.').map(Number)
+    today = today[0] * 28 * 12 + today[1] * 28 + today[2]
     
     obj_terms = {}
     terms.forEach(v => obj_terms[v.split(' ')[0]] = parseInt(v.split(' ')[1]) * 28)
     
-    privacies = privacies.map(v => v.split(' '))
     privacies = privacies.map((v, i) => {
-        let date = v[0].split('.')
-        return parseInt(date[0].slice(2)) * 28 * 12 + 
-            parseInt(date[1]) * 28 + parseInt(date[2]) + obj_terms[v[1]]
+        let date = v.split(' ')[0].split('.').map(Number)
+        return date[0] * 28 * 12 + date[1] * 28 + date[2] + obj_terms[v.split(' ')[1]]
     })
     return privacies.map((v, i) => v - today <= 0 ? i + 1 : 0).filter(v => v)
 }
