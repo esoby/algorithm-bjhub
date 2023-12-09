@@ -1,12 +1,11 @@
 function solution(wallpaper) {
-    let line_cnt = []
-    let val_cnt = []
-    wallpaper = wallpaper.map(v => v.split(''))
-    wallpaper.forEach((line,index) => {
-        if (line.includes('#')) line_cnt.push(index);
-        line.forEach((v,i) => {
-            if (v === '#') val_cnt.push(i);
-        })
+    let x = []
+    let y = []
+    
+    wallpaper.forEach((line, idx) => {
+        if (line.includes('#')) x.push(idx);
+        line.split('').forEach((v, idx) => v === '#' ? y.push(idx) : '')
     })
-    return [Math.min(...line_cnt), Math.min(...val_cnt), Math.max(...line_cnt) + 1, Math.max(...val_cnt) + 1];
+    
+    return [Math.min(...x), Math.min(...y), Math.max(...x) + 1, Math.max(...y) + 1];
 }
