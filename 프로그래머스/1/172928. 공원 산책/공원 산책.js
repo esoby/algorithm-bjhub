@@ -15,6 +15,7 @@ function solution(park, routes) {
         let tmp = res
         n = parseInt(n)
         
+        
         if (op === 'E' && res[1] + n < park[0].length){ 
             let flag = true
             for (let i = 1; i <= n; i++){
