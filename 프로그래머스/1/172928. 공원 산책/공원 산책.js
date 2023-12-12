@@ -3,47 +3,24 @@ function solution(park, routes) {
     let op = ''
     let n = 0
     
-    // 시작 지점 찾기
-    park.forEach((v, i) => {
-        v.split('').forEach((val, idx) => {
-            if (val === 'S') res = [i, idx]
-        })
-    })
+    park.forEach((v, i) => v.split('').forEach((val, idx) => val === 'S' ? res = [i, idx] : ''))
     
     routes.forEach(route => {
         [op, n] = route.split(' ')
-        let tmp = res
         n = parseInt(n)
         
-        
-        if (op === 'E' && res[1] + n < park[0].length){ 
+        const checkX = (y, y_sign, x, x_sign) => {
             let flag = true
-            for (let i = 1; i <= n; i++){
-                if (park[res[0]][res[1] + i] === 'X') flag = false
-            }
-            if(flag) res[1] += n
+            for (let i = 1; i <= n; i++)
+                if (park[y + (y_sign * i)][x + (x_sign * i)] === 'X') flag = false;
+            return flag
         }
-        else if (op === 'W' && res[1] - n >= 0) {
-            let flag = true
-            for (let i = 1; i <= n; i++){
-                if (park[res[0]][res[1] - i] === 'X') flag = false
-            }
-            if(flag) res[1] -= n
-        } 
-        else if (op === 'N' && res[0] - parseInt(n) >= 0) {
-            let flag = true
-            for (let i = 1; i <= n; i++){
-                if (park[res[0] - i][res[1]] === 'X') flag = false
-            }
-            if(flag) res[0] -= n
-        } 
-        else if (op === 'S' && res[0] + n < park.length){
-            let flag = true
-            for (let i = 1; i <= n; i++){
-                if (park[res[0] + i][res[1]] === 'X') flag = false
-            }
-            if(flag) res[0] += n
-        }
+
+        if (op === 'E' && res[1] + n < park[0].length && checkX(res[0], 0, res[1], 1)) res[1] += n;
+        else if (op === 'W' && res[1] - n >= 0 && checkX(res[0], 0, res[1], -1)) res[1] -= n;
+        else if (op === 'S' && res[0] + n < park.length && checkX(res[0], 1, res[1], 0)) res[0] += n;
+        else if (op === 'N' && res[0] - parseInt(n) >= 0 && checkX(res[0], -1, res[1], 0)) res[0] -= n;
     })
+    
     return res;
 }
