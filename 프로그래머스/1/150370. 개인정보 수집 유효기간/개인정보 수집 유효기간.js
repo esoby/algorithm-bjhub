@@ -2,7 +2,7 @@ function solution(today, terms, privacies) {
     today = String(today).split('.').map(Number)
     today = today[0] * 28 * 12 + today[1] * 28 + today[2]
     
-    obj_terms = {}
+    const obj_terms = {}
     terms.forEach(v => obj_terms[v.split(' ')[0]] = parseInt(v.split(' ')[1]) * 28)
     
     privacies = privacies.map((v, i) => {
