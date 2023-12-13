@@ -1,19 +1,17 @@
-function solution(id_list, report, k) {
-    var answer = [];
-    
-    for(const i of id_list) answer.push(0)
+function solution(id_list, reports, k) {
+    var mail = [];
+    for(const i of id_list) mail.push(0)
     
     const map = new Map()
-    report.forEach(des => {
-        let [act, pas] = des.split(' ')
-        map.set(pas, map.get(pas) ? new Set([...map.get(pas), act]) : new Set([act]))
+    reports.forEach(report => {
+        let [rep, sus] = report.split(' ')
+        map.set(sus, map.get(sus) ? new Set([...map.get(sus), rep]) : new Set([rep]))
     })
     
     map.forEach((set, key) => {
-        if (set.size >= k) {
-            set.forEach(v => answer[id_list.indexOf(v)] = answer[id_list.indexOf(v)] + 1)
-        }
+        if (set.size >= k)
+            set.forEach(v => mail[id_list.indexOf(v)] += 1);
     })
     
-    return answer;
+    return mail;
 }
