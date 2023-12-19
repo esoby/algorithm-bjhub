@@ -6,7 +6,7 @@ function solution(n, words) {
         if (ans.indexOf(word) === -1 && 
             words[idx - 1][words[idx - 1].length - 1] === word[0]) 
             ans.push(word);
-        else return [(idx + 1) % n === 0 ? n : (idx + 1) % n, Math.ceil((idx + 1) / n)];
+        else return [(idx + 1) % n ? (idx + 1) % n : n, Math.ceil((idx + 1) / n)];
     }
     return [0, 0];
 }
