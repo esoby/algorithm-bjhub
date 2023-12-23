@@ -3,14 +3,9 @@ function solution(people, limit) {
     
     people.sort((a, b) => a - b)
     
-    while(true){
-        if (!people[1]) break;
-        if(people[0] + people[people.length - 1] <= limit){
-            people.pop()
-            people.shift()
-        } else {
-            people.pop()
-        }
+    while (people[1]){
+        if (people[0] + people[people.length - 1] <= limit) people.shift();
+        people.pop()
         cnt += 1
     }
     return cnt + people.length;
