@@ -3,28 +3,27 @@ function solution(arr) {
     
     for (let idx = 0; idx < arr.length; idx++) {
         if(!arr[idx + 1]) break;
-        let v = arr[idx]
+        let v1 = arr[idx]
         let v2 = arr[idx + 1]
         let lcm = 1;
         
         for (let i = 0; i < unit.length; i++) {
-            while (v % unit[i] === 0 || v2 % unit[i] === 0) {
-                if (v % unit[i] === 0 && v2 % unit[i] === 0) {
+            while (v1 % unit[i] === 0 || v2 % unit[i] === 0) {
+                if (v1 % unit[i] === 0 && v2 % unit[i] === 0) {
                     lcm *= unit[i]
-                    v /= unit[i]
+                    v1 /= unit[i]
                     v2 /= unit[i]
-                } else if (v % unit[i] === 0) {
+                } else if (v1 % unit[i] === 0) {
                     lcm *= unit[i]
-                    v /= unit[i]
+                    v1 /= unit[i]
                 } else if (v2 % unit[i] === 0) {
                     lcm *= unit[i]
                     v2 /= unit[i]
                 }
             }
         }
-        lcm *= v !== v2 ? v * v2 : v
-        arr[idx + 1] = parseInt(lcm)
-            console.log(arr)
+        lcm *= v1 !== v2 ? v1 * v2 : v1
+        arr[idx + 1] = lcm
     }
     return arr[arr.length - 1];
 }
