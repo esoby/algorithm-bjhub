@@ -1,5 +1,4 @@
-function solution(n,a,b)
-{
+function solution(n,a,b){
     let cnt = 0;
     
     while (a !== b) {
@@ -7,6 +6,5 @@ function solution(n,a,b)
         b = Math.ceil(b / 2);
         cnt += 1;
     }
-
     return cnt;
 }
