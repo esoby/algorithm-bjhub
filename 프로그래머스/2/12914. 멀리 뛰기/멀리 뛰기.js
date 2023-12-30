@@ -1,8 +1,8 @@
 function solution(n) {
-    let a = 1
-    let b = 2
+    let a = 2
+    let b = 3
     
-    for (let i = 3; i <= n; i++) [a, b] = [b, (a + b) % 1234567]
+    for (let i = 4; i <= n; i++) [a, b] = [b, (a + b) % 1234567]
     
-    return n === 1 ? n : b
+    return n < 4 ? n : b
 }
