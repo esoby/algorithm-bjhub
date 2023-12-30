@@ -4,5 +4,5 @@ function solution(n) {
         [a, b] = [b, a];
         b = (a + b) % 1234567;
     }
-    return n == 1 ? 1 : b;
+    return n === 1 ? n : b;
 }
