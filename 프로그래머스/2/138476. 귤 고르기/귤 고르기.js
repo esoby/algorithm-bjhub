@@ -1,11 +1,18 @@
 function solution(k, tangerine) {
-    let obj = {}
-    tangerine.forEach(v => obj[v - 1] ? obj[v - 1]++ : obj[v - 1] = 1)
-    obj = Object.values(obj).sort((a, b) => a - b)
-    
-    let cnt = 0
-    let level = obj.length
-    while (cnt < k) cnt += obj.pop()
-
-    return level - obj.length;
+    let size = {}
+    let result = 0
+    let count = 0
+    tangerine.map(e => {
+        size[e-1] ? size[e-1]++ : size[e-1] = 1 
+    })
+    let value = Object.values(size)
+    value.sort((a,b) => b-a)
+    for(let i = 0; i < value.length; i++){
+        result += value[i]
+        count++
+        if(result >= k){
+            break;
+        }
+    }
+    return count
 }
