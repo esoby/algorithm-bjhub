@@ -1,22 +1,18 @@
 function solution(want, number, discount){
-    let result = 0
+    let cnt = 0
     
-    
-    for (let i = 0; i < discount.length; i++){
+    for (let i = 0; i < discount.length - 9; i++){
         let dis = discount.slice(i, i + 10)
+    
+        let map = new Map()
+        want.forEach((v,i) => map.set(v, number[i]))
+        dis.forEach(v => { if(map.has(v)) map.set(v, map.get(v) - 1)})
         
-        let tmp = new Map()
-        want.forEach((v,i) => tmp.set(v, number[i]))
-        
-        dis.forEach(v => {
-            if (tmp.has(v)) tmp.set(v, tmp.get(v) - 1)
-        })
-        
-        const arr = []
-        const iter = tmp.values();
-        for(let j = 0; j < tmp.size; j++) arr.push(iter.next().value)
-        
-        if (arr.filter(v => v !== 0).length < 1) result += 1
+        const iter = map.values();
+        for(let j = 0; j < map.size; j++) {
+            if (iter.next().value > 0) break
+            if (j === map.size - 1) cnt += 1
+        }
     }
-    return result
+    return cnt
 }
