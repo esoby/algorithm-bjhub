@@ -1,10 +1,12 @@
 function solution(citations) {
-    const arr = [0]
-    
-    citations.forEach(v => {
-        let len = citations.filter(ct => ct >= v).length
-        if(v >= len) arr.push(len)
-    })
-    
-    return Math.max(...arr)
+    let ans = 0
+
+    citations.sort((a, b) => b - a)
+
+    for(let i = 0; i < citations.length; i++) {
+        if (citations[i] > i) ans++
+        else break
+    }
+
+    return ans
 }
