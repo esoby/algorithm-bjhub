@@ -1,9 +1,9 @@
 function solution(citations) {
-    let arr = [0]
+    const arr = [0]
     
     citations.forEach(v => {
-        if(v >= citations.filter(ct => ct >= v).length)
-            arr.push(citations.filter(ct => ct >= v).length)
+        let len = citations.filter(ct => ct >= v).length
+        if(v >= len) arr.push(len)
     })
     
     return Math.max(...arr)
