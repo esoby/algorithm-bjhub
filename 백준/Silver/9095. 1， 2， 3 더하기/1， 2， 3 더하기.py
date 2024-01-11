@@ -7,11 +7,11 @@ for _ in range(t):
         print(1)
         continue
 
-    queue = [(n, 0)]
+    queue = [n]
 
     answer = 0
     while queue:
-        num, cnt = queue.pop()
+        num = queue.pop()
 
         if num == 0:
             answer += 1
@@ -19,6 +19,6 @@ for _ in range(t):
 
         for i in range(1, 4):
             if num - i >= 0:
-                queue.append((num - i, cnt + 1))
+                queue.append(num - i)
 
     print(answer)
