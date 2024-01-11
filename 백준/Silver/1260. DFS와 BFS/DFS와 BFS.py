@@ -1,50 +1,52 @@
-from collections import deque
+# 런타임 에러 뜨는데 해결 못함;;;; 뭐가 문제일까요
+import sys
+from collections import defaultdict, deque
 
-n, m, v = map(int, input().split())
+node_count, edge_count, first_node = map(int, sys.stdin.readline().split())
+graph = defaultdict(list)
 
-my_dict = {}
+# 연결 형태
+for i in range(edge_count):
+    node1, node2 = map(int, sys.stdin.readline().split())
+    graph[node1].append(node2)
+    graph[node2].append(node1)
 
-for _ in range(m):
-    key, val = map(int, input().split())
+# 오름차순 정렬
+for key in graph.keys():
+    graph[key].sort()
 
-    if key in my_dict:
-        my_dict[key].append(val)
-        my_dict[key].sort()
-    else:
-        my_dict[key] = [val]
-
-    key, val = val, key
-
-    if key in my_dict:
-        my_dict[key].append(val)
-        my_dict[key].sort()
-    else:
-        my_dict[key] = [val]
-
-
-def dfs(num, visited):
-    visited.append(num)
-
-    if num in my_dict:
-        for i in my_dict[num]:
-            if i not in visited:
-                dfs(i, visited)
-    return visited
+# 방문 노드 리스트
+visited_DFS = [0 for _ in range(node_count + 1)]
+visited_BFS = [0 for _ in range(node_count + 1)]
+answer_DFS = []
+answer_BFS = []
 
 
-def bfs(start):
-    visited = [start]
-    q = deque([start])
+def DFS(n):
+    # 방문
+    visited_DFS[n] = 1
+    answer_DFS.append(n)
+
+    for node in graph[n]:
+        if visited_DFS[node] != 1:
+            DFS(node)
+
+
+def BFS(n):
+    q = deque([n])
+    visited_BFS[n] = 1
+    answer_BFS.append(n)
 
     while q:
-        num = q.popleft()
-        if num in my_dict:
-            for i in my_dict[num]:
-                if i not in visited:
-                    q.append(i)
-                    visited.append(i)
-    return visited
+        node = q.popleft()
+        for i in graph[node]:
+            if visited_BFS[i] == 0:
+                q.append(i)
+                answer_BFS.append(i)
+                visited_BFS[i] = 1
 
+DFS(first_node)
+BFS(first_node)
 
-print(' '.join(map(str, dfs(v, []))))
-print(' '.join(map(str, bfs(v))))
+print(*answer_DFS)
+print(*answer_BFS)
