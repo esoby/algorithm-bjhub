@@ -4,15 +4,14 @@ function solution(s) {
         .split(' ')
         .filter(v => v !== '' && v !== ',')
         .map(v => v.split(','))
-        .map(v => v.map(num => parseInt(num)))
+        .map(v => v.map(n => parseInt(n)))
         .sort((a, b) => a.length - b.length)
-    //	[ [ 2 ], [ 2, 1 ], [ 2, 1, 3 ], [ 2, 1, 3, 4 ] ]
     
     const ans = []
     
-    s.forEach(arr => {
-        arr.forEach(v => {
-            if(ans.indexOf(v) === -1) ans.push(v)
+    s.forEach(v => {
+        v.forEach(n => {
+            if(ans.indexOf(n) === -1) ans.push(n)
         })
     })
     
