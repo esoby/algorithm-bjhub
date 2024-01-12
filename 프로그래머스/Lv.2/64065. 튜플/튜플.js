@@ -5,9 +5,9 @@ function solution(s) {
         .map(v => v.map(n => parseInt(n)))
         .sort((a, b) => a.length - b.length)
     
+    console.log(s)
     const ans = []
     
-    s.forEach(v => v.forEach(n => {if(ans.indexOf(n) === -1) ans.push(n)}))
-    
+    s.forEach(v => v.forEach(n => ans.indexOf(n) === -1 ? ans.push(n) : ''))
     return ans
 }
