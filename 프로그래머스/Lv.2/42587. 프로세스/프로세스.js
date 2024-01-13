@@ -1,28 +1,16 @@
 function solution(pr, loc) {
-    task = []
-    pr.forEach((_, i) => task.push(i))
+    let cnt = 0
     
-    
-    function chkPrMin(num, pr){
-        let flag = true
-        pr.forEach(v =>{
-            if(v > num) flag = false
-        })
-        return flag
-    }
-    
-    cnt = 0
-    while (pr.length) {
+    while(pr.length) {
+        loc--
         tmp = pr.shift()
-        tmp_idx = task.shift()
         
-        if(chkPrMin(tmp, pr)){
+        if(Math.max(...pr) <= tmp) {
             cnt++
-            if (tmp_idx === loc) return cnt
+            if(loc == -1) return cnt
         } else {
             pr.push(tmp)
-            task.push(tmp_idx)
+            if(loc == -1) loc = pr.length - 1
         }
     }
-    return 0;
 }
