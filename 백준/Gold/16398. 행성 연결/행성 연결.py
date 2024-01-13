@@ -1,23 +1,25 @@
 class DisjointSet:
+    # 분리 집합 알고리즘으로 점들 간 연결 여부 확인
     def __init__(self, n):
         self.parent = list(range(n))
-        self.rank = [0] * n
 
     def find(self, x):
-        if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])
+        # 집합 대표에 도달하면 본인 리턴
+        if self.parent[x] == x:
+            return x
+        # 부모의 부모의 부모 ... 를 찾기 (집합 대표를 찾기)
+        self.parent[x] = self.find(self.parent[x])
         return self.parent[x]
 
     def union(self, x, y):
+        # 서로 다른 부모 정점을 가지는 집합을 합친다
         root_x = self.find(x)
         root_y = self.find(y)
-        if root_x != root_y:
-            if self.rank[root_x] > self.rank[root_y]:
-                self.parent[root_y] = root_x
-            else:
-                self.parent[root_x] = root_y
-                if self.rank[root_x] == self.rank[root_y]:
-                    self.rank[root_y] += 1
+        # 같으면 이미 한 집합 소속
+        if root_x == root_y:
+            return
+        # 다르면 x의 집합이 y의 집합에 속해지도록 부모를 변경해준다
+        self.parent[root_x] = root_y
 
 
 if __name__ == '__main__':
