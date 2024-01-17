@@ -14,22 +14,20 @@ function solution(str1, str2) {
             arr2.push(str2[i] + str2[i + 1])
 
     
-    inter = 0
-    union = arr2.length
+    let inter = 0
+    let union = arr2.length
         
     for(let i = 0; i < arr1.length; i++){
-        let flag = false
+        let flag = inter
         for(let j = 0; j < arr2.length; j++){
             if(arr1[i] === arr2[j]){
-                inter++
-                flag = true
                 arr2[j] = '/'
+                inter++
                 break
             }
         }
-        if(!flag) union++
+        if(flag == inter) union++
     }
-        
     if (!inter && !union) return 65536
     return Math.floor(inter / union * 65536)
 }
