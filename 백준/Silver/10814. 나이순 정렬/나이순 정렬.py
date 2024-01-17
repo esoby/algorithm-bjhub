@@ -1,13 +1,12 @@
 n = int(input())
-mem_tuples = []
-mylist = []
+arr = []
+
 for i in range(n):
-    mylist = input().split() + [i]
-    mem_tuples.append(mylist)
+    age, name = map(str, input().split())
+    arr.append((int(age), i, name))
 
-mem_tuples = sorted(mem_tuples, key=lambda mem: (int(mem[0]), mem[2]))
+arr.sort()
 
-for i in mem_tuples:
-    for j in range(2):
-        print(i[j],end=' ')
-    print('')
+for i in range(n):
+    age, _, name = arr[i]
+    print(age, name)
