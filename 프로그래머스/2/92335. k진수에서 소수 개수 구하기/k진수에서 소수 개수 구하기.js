@@ -6,9 +6,6 @@ function isPrime(n) {
 
 function solution(n, k) {
     let lst = n.toString(k).split('0')
-    
-    console.log(n.toString(k))
-    console.log(lst)
     let cnt = 0
     lst.forEach(v => {
         if(v !== '' && v !== '1' & isPrime(parseInt(v))) cnt += 1
