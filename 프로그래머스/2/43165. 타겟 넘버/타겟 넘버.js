@@ -6,11 +6,9 @@ function solution(numbers, target) {
             if (num === target) cnt += 1
             return
         }
-        
         dfs(num + numbers[visit], visit + 1)
         dfs(num - numbers[visit], visit + 1)
     }
-    
     dfs(0, 0)
     return cnt
 }
