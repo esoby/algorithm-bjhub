@@ -10,6 +10,5 @@ function solution(n, k) {
     lst.forEach(v => {
         if(v !== '' && v !== '1' & isPrime(parseInt(v))) cnt += 1
     })
-    
     return cnt
 }
