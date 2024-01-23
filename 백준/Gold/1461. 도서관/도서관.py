@@ -1,18 +1,9 @@
-
 n, m = map(int, input().split())
 
 loc = list(map(int, input().split()))
-loc.sort(reverse=True)
 
-tmp = n
-for idx in range(n):
-    if loc[idx] < 0:
-        tmp = idx
-        break
-
-plus = loc[:tmp]
-minus = loc[tmp:]
-minus.reverse()
+plus = sorted(list(filter(lambda x: x > 0, loc)), reverse=True)
+minus = sorted(list(filter(lambda x: x < 0, loc)))
 
 total = 0
 for i in range(0, len(plus), m):
@@ -23,6 +14,5 @@ for i in range(0, len(minus), m):
 
 plus.append(0)
 minus.append(0)
-tmp = max(plus[0], abs(minus[0]))
 
-print(total - tmp)
+print(total-max(plus[0], abs(minus[0])))
