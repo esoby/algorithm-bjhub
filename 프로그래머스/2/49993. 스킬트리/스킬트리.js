@@ -1,5 +1,5 @@
 function solution(skill, skill_trees) {
-    var answer = 0;
+    let answer = 0;
     
     skill_trees.forEach(tree => {
         let learned = []
@@ -12,8 +12,7 @@ function solution(skill, skill_trees) {
                     if (learned.indexOf(skill[i]) === -1) flag = false
             }
             learned.push(sk)
-        })
-        
+        })    
         if (flag) answer++
     }) 
     return answer;
